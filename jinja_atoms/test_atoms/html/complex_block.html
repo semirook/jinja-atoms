@@ -1,0 +1,17 @@
+<p>We have {{ arg }} parrots</p>
+
+{%- if kwarg -%}
+    <p>And {{ kwarg }} carrots</p>
+{%- endif -%}
+
+{%- if args -%}
+    <p>And the list: {{ args|join(', ') }}</p>
+{%- endif -%}
+
+{%- if kwargs -%}
+<p>And the map:</p><p>
+    {%- for k, v in kwargs.items() -%}
+        {{ k|capitalize }}: {{ v }}{% if not loop.last %}, {% endif %}
+    {%- endfor -%}
+</p>
+{%- endif -%}
