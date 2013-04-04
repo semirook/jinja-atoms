@@ -1,2 +1,2 @@
 ## Jinja Atoms
-* The docs will be ready soon*
+[logo]: https://raw.github.com/semirook/jinja-atoms/master/LOGO.png "Jinja Atoms logo"
