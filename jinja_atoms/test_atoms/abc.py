@@ -1,4 +1,6 @@
 # coding=utf-8
+from jinja2 import Environment, PackageLoader
+
 from ..decorators import atom
 
 
@@ -35,3 +37,13 @@ def complex_block(arg, kwarg=None, *args, **kwargs):
         'args': args,
         'kwargs': kwargs,
     }
+
+
+custom_env = Environment(
+    loader=PackageLoader('jinja_atoms.test_atoms', 'custom_html')
+)
+
+
+@atom('jinja_atoms.test_atoms', 'simple_block.html', env=custom_env)
+def custom_env_simple_block():
+    return {'greeting': 'hello!'}

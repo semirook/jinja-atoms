@@ -17,10 +17,6 @@ class AtomsTestCase(unittest.TestCase):
             extensions=[JinjaAtomsExtension]
         )
 
-    def get_rendered_atom(self, tmpl):
-        result = self.jinja_env.get_template(tmpl).render()
-        return result.strip()
-
 
 class ValidAtomsTestCase(AtomsTestCase):
 
@@ -90,6 +86,13 @@ class ValidAtomsTestCase(AtomsTestCase):
                 '<p>And the map:</p><p>Months: 12, Days: 31</p>'
             )
         )
+
+    def test_custom_env_block(self):
+        result = self.jinja_env.from_string(
+            '{% use atoms jinja_atoms.test_atoms.abc as abc %}'
+            '{% atom abc:custom_env_simple_block() %}'
+        ).render()
+        self.assertEqual(result, '<p>Custom env, hello!</p>')
 
 
 class InvalidAtomsTestCase(AtomsTestCase):
