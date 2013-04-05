@@ -95,8 +95,11 @@ class JinjaAtomsExtension(Extension):
             })
 
         atom_func = nodes.Name(env_atom_name, 'load')
-        node = nodes.Call(atom_func, atom_args, atom_kwargs, None, None)
-        node = nodes.Output([node])
+        node = nodes.Output([
+            nodes.MarkSafeIfAutoescape(
+                nodes.Call(atom_func, atom_args, atom_kwargs, None, None)
+            )
+        ])
         node.set_lineno(lineno)
 
         return node
