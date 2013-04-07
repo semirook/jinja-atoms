@@ -44,6 +44,6 @@ custom_env = Environment(
 )
 
 
-@atom('jinja_atoms.test_atoms', 'simple_block.html', env=custom_env)
+@atom(jinja_template='simple_block.html', env=custom_env)
 def custom_env_simple_block():
     return {'greeting': 'hello!'}
