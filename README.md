@@ -1,4 +1,4 @@
-## Jinja Atoms [![Build Status](https://travis-ci.org/semirook/jinja-atoms.png)](https://travis-ci.org/semirook/jinja-atoms)
+# Jinja Atoms [![Build Status](https://travis-ci.org/semirook/jinja-atoms.png)](https://travis-ci.org/semirook/jinja-atoms)
 Atomic inclusion blocks extension for Jinja2 template engine
 
 
