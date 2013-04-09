@@ -49,3 +49,15 @@ There are web-developers that do not know about them at all or simply believe it
 Yes, it could be true with some kind of dirty engine hacks. But. Jinja is extendable by design. 
 It's completely legal to write parser extensions and use them. So... render templates inside of another templates 
 with some custom context? it’s possible and it’s already done in **Jinja Atoms** for you.
+
+## I don’t understand what you talking about!
+If you had no practice with Django and Django template engine itself, you possibly do not understand the use case.
+Think about some typical problems. How would you implement a sidebar that has to change it’s behaviour and appearence 
+somehow by the context it’s shown in with standard Jinja's built-ins? Or site menu, stored like MPTT-structure 
+somewhere in your Postgres or Redis DB? Or a standard set of action buttons that are sensitive to some 
+kinds of entities? Yes, you can implement all of that stuff without any extension by using Jinja 
+[macroses](http://jinja.pocoo.org/docs/templates/#macros) 
+and Flask [context processors](http://flask.pocoo.org/docs/templating/#context-processors) (it's not Jinja feature).
+
+But the main idea of Jinja Atoms is maintanability. And DRY. And ease to use. You can describe them once 
+and include pre-rendered complex dynamic content everywhere you need with one simple statement.
