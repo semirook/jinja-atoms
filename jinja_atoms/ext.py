@@ -65,14 +65,13 @@ class JinjaAtomsExtension(Extension):
                 arg_expr = parser.parse_expression()
                 atom_args.append(arg_expr)
             elif arg.type == 'name':
-                arg_name = nodes.Name(arg.value, 'load')
-                next(parser.stream)
+                expr = parser.parse_expression()
                 if parser.stream.current.type == 'assign':
                     next(parser.stream)
                     arg_expr = parser.parse_expression()
                     atom_kwargs.append(nodes.Keyword(arg.value, arg_expr))
                 else:
-                    atom_args.append(arg_name)
+                    atom_args.append(expr)
             else:
                 next(parser.stream)
 
