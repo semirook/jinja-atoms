@@ -52,28 +52,15 @@ class JinjaAtomsExtension(Extension):
         parser.stream.expect('lparen')
 
         while parser.stream.current.type not in ['rparen', 'eof']:
-            if atom_args or atom_kwargs:
-                parser.stream.expect('comma')
-
-            arg = parser.stream.current
-            if arg.type in ['integer', 'string']:
-                atom_args.append(
-                    nodes.Const(arg.value)
-                )
-                next(parser.stream)
-            elif arg.type in ['lbracket', 'lbrace']:
-                arg_expr = parser.parse_expression()
-                atom_args.append(arg_expr)
-            elif arg.type == 'name':
+            expr, key = parser.parse_expression(), None
+            if parser.stream.skip_if('assign'):
+                key = expr
                 expr = parser.parse_expression()
-                if parser.stream.current.type == 'assign':
-                    next(parser.stream)
-                    arg_expr = parser.parse_expression()
-                    atom_kwargs.append(nodes.Keyword(arg.value, arg_expr))
-                else:
-                    atom_args.append(expr)
+            if key:
+                atom_kwargs.append(nodes.Keyword(key.name, expr))
             else:
-                next(parser.stream)
+                atom_args.append(expr)
+            parser.stream.skip_if('comma')
 
         parser.stream.expect('rparen')
 
