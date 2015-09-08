@@ -1,0 +1,19 @@
+Metadata-Version: 1.0
+Name: jinja-atoms
+Version: 0.1
+Summary: Atomic inclusion blocks extension for Jinja2 template engine
+Home-page: https://github.com/semirook/jinja-atoms
+Author: Roman Semirook
+Author-email: semirook@gmail.com
+License: BSD
+Description: Visit https://github.com/semirook/jinja-atoms to read the doc
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: Web Environment
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Topic :: Internet :: WWW/HTTP :: Dynamic Content
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Topic :: Text Processing :: Markup :: HTML

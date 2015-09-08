@@ -52,6 +52,14 @@ class ValidAtomsTestCase(AtomsTestCase):
             '<p>There is 42 or 43 parrots</p><p>There is 42 or 43 parrots</p>'
         )
 
+    def test_block_with_complex_args(self):
+        result = self.jinja_env.from_string(
+            '{% use atoms jinja_atoms.test_atoms as ta %}'
+            '{% set obj = {"prop1": 1, "prop2": 2} %}'
+            '{% atom ta:block_with_args(obj.prop2, "parrots") %}'
+        ).render()
+        self.assertEqual(result, '<p>There is 2 parrots</p>')
+
     def test_multiple_namespaces(self):
         result = self.jinja_env.from_string(
             '{% use atoms jinja_atoms.test_atoms as ta %}'
